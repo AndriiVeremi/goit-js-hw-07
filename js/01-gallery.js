@@ -10,7 +10,6 @@ galleryContainer.insertAdjacentHTML('beforeend', galleryItemMarkup)
 
 galleryContainer.addEventListener('click', onGalleryContainerClick)
 
-
 function createGalleryImgMarkup(galleryItems) {
     return galleryItems
         .map(({ preview, original, description }) => {
@@ -29,21 +28,20 @@ function createGalleryImgMarkup(galleryItems) {
         .join('');
     
 }
-// console.log(createGalleryImgMarkup(galleryItems))
 
 function onGalleryContainerClick(event) {
     event.preventDefault();
 
     const imgLinkEl = event.target.dataset.source;
-    const instance = basicLightbox.create(`<img src="${imgLinkEl}" width="800" height="600">`)
+    const instance = basicLightbox.create(`<img src="${imgLinkEl}" width="800" height="600">`);
     
-    instance.show(window.addEventListener('keydown', onEscKey))
+    instance.show(window.addEventListener('keydown', onEscKey));
 
     function onEscKey(event) {
         if (event.code === 'Escape') {
             instance.close(window.removeEventListener('keydown', onEscKey))
-        }
-    }
+        };
+    };
 }
 
 
