@@ -32,17 +32,26 @@ function createGalleryImgMarkup(galleryItems) {
 function onGalleryContainerClick(event) {
     event.preventDefault();
 
+    const isImage = event.target.classList.contains('gallery__image');
+    if (!isImage) return;
+
     const imgLinkEl = event.target.dataset.source;
-    const instance = basicLightbox.create(`<img src="${imgLinkEl}" width="800" height="600">`);
-    
-    instance.show(window.addEventListener('keydown', onEscKey));
+
+    const instance = basicLightbox.create(`<img src="${imgLinkEl}" width="1280" height="auto">`, {
+        onShow: (instance) => {
+            window.addEventListener('keydown', onEscKey);
+        },
+        onClose: (instance) => {
+            window.removeEventListener('keydown', onEscKey);
+        },
+    })
+
+    instance.show();
 
     function onEscKey(event) {
         if (event.code === 'Escape') {
-            instance.close(window.removeEventListener('keydown', onEscKey))
+            instance.close()
         };
     };
 }
-
-
 
