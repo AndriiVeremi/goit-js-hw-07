@@ -27,17 +27,23 @@ function createGalleryImgMarkup(galleryItems) {
         </div>`;
     })
         .join('');
-
+    
 }
-
+console.log(createGalleryImgMarkup(galleryItems))
 
 function onGalleryContainerClick(event) {
-    
+    event.preventDefault();
+
     const imgLinkEl = event.target.dataset.source;
-   
     const instance = basicLightbox.create(`<img src="${imgLinkEl}" width="800" height="600">`)
     instance.show()
 
-    
+    window.addEventListener('keydown', onEscCloseGallery)
+
+    function onEscCloseGallery(event) {
+        if (event.code === 'Escape') {
+            instance.close()
+        }
+    }
 }
 
