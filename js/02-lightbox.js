@@ -3,7 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-
 const galleryContainer = document.querySelector('.js-gallery');
 
 galleryContainer.innerHTML = galleryItems
@@ -19,6 +18,8 @@ galleryContainer.innerHTML = galleryItems
         .join('');
 
 const lightbox = new SimpleLightbox('.js-gallery a', {
-    captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250
 });
 
