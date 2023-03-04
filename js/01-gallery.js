@@ -31,8 +31,8 @@ function createGalleryImgMarkup(galleryItems) {
 function onGalleryContainerClick(event) {
     event.preventDefault();
 
-    const isImage = event.target.classList.contains('gallery__image');
-    if (!isImage) return;
+    const isImages = event.target.classList.contains('gallery__image');
+    if (!isImages) return;
 
     const imgLinkEl = event.target.dataset.source;
 
@@ -87,8 +87,8 @@ function onGalleryContainerClick(event) {
 //     function onGalleryContainerClick(event) {
 //     event.preventDefault();
 
-//     const isImage = event.target.classList.contains('gallery__image');
-//     if (!isImage) return;
+//     const isImages = event.target.classList.contains('gallery__image');
+//     if (!isImages) return;
 
 //     const imgLinkEl = event.target.dataset.source;
 //     const instance = basicLightbox.create(`<img src="${imgLinkEl}" width="1280" height="auto">`);
