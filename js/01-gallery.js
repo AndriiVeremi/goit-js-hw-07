@@ -29,21 +29,22 @@ function createGalleryImgMarkup(galleryItems) {
         .join('');
     
 }
-console.log(createGalleryImgMarkup(galleryItems))
+// console.log(createGalleryImgMarkup(galleryItems))
 
 function onGalleryContainerClick(event) {
     event.preventDefault();
 
     const imgLinkEl = event.target.dataset.source;
     const instance = basicLightbox.create(`<img src="${imgLinkEl}" width="800" height="600">`)
-    instance.show()
+    
+    instance.show(window.addEventListener('keydown', onEscKey))
 
-    window.addEventListener('keydown', onEscCloseGallery)
-
-    function onEscCloseGallery(event) {
+    function onEscKey(event) {
         if (event.code === 'Escape') {
-            instance.close()
+            instance.close(window.removeEventListener('keydown', onEscKey))
         }
     }
 }
+
+
 
